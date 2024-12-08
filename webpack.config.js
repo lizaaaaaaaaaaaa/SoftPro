@@ -39,12 +39,20 @@ module.exports = {
           filename: "fonts/[name][hash][ext]",
         },
       },
+      {
+        test: /\.(ico|png|svg|webmanifest)$/i, // Обробляємо всі файли з розширеннями
+        include: path.resolve(__dirname, "src/favicon"), // Лише файли з папки favicon
+        type: "asset/resource",
+        generator: {
+          filename: "favicon/[hash][ext][query]",
+        },
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      filename: "index.html",
+      filename: "index.html"
     }),
   ],
   devServer: {
