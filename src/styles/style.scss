@@ -17,6 +17,10 @@ body {
 .header {
   background: rgba(21, 21, 21, 0.5);
 
+  .logo {
+    width: 151px;
+  }
+
   &__inner {
     grid-template-areas: "logo nav tools";
 
@@ -58,7 +62,6 @@ body {
 
 .logo {
   font-family: "e-Ukraine Head";
-  width: 187px;
   grid-area: logo;
 
   span {
@@ -104,7 +107,7 @@ body {
 .intro {
   h1 {
     font-family: "e-Ukraine Head";
-    font-size: 67px;
+    font-size: 57px;
     line-height: 1.26;
   }
 
@@ -244,6 +247,12 @@ body {
 
 .marquee__inner {
   animation: marquee 7s linear infinite;
+}
+
+footer {
+  .logo {
+    width: 258px;
+  }
 }
 
 @keyframes marquee {
