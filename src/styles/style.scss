@@ -1,0 +1,250 @@
+@use "fonts.scss";
+@use "applies.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "e-Ukraine", sans-serif;
+}
+
+.container {
+  max-width: 1332px;
+  @apply px-2.5 mx-auto;
+}
+
+.header {
+  background: rgba(21, 21, 21, 0.5);
+
+  &__inner {
+    grid-template-areas: "logo nav tools";
+
+    @media screen and (max-width: 1260px) {
+      grid-template-areas:
+        "logo tools"
+        "nav nav";
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-areas: "logo tools burger";
+    }
+
+    @media screen and (max-width: 580px) {
+      grid-template-areas:
+        "logo burger"
+        "tools tools";
+    }
+  }
+
+  &__tools {
+    font-family: "Montserrat", sans-serif;
+    grid-area: tools;
+  }
+
+  &__menu {
+    grid-area: burger;
+    height: 30px;
+  }
+
+  &__lang {
+    padding: 8px 24px;
+  }
+
+  &__login {
+    padding: 10px 22px;
+  }
+}
+
+.logo {
+  width: 187px;
+  grid-area: logo;
+
+  span {
+    background: #e0fc52;
+    border-radius: 10px;
+    min-width: 36px;
+    height: 34px;
+  }
+}
+
+.nav {
+  grid-area: nav;
+
+  &__menu {
+    width: 18px;
+    height: 14px;
+    left: 15px;
+
+    &:after {
+      content: "";
+      width: 48px;
+      height: 48px;
+      display: block;
+      position: absolute;
+      background-color: #101010;
+      border-radius: 100%;
+      z-index: 1;
+      top: -16px;
+      left: -16px;
+    }
+
+    @media screen and (max-width: 768px) {
+      top: 15px;
+    }
+  }
+
+  &.active {
+    top: 60px;
+    transition: 300ms;
+  }
+}
+
+.intro {
+  h1 {
+    font-family: "e-Ukraine Head";
+    font-size: 67px;
+    line-height: 1.26;
+  }
+
+  &__text {
+    padding: 3px 0 3px 7px;
+    border-left: 3px solid #fff;
+    margin-bottom: 43px;
+  }
+
+  video {
+    margin-top: 231px;
+  }
+
+  & > div:first-child {
+    top: -123px;
+    padding-top: 41px;
+    background: rgba(21, 21, 21, 0.5);
+  }
+
+  & > div {
+    background: rgba(21, 21, 21, 0.5);
+  }
+
+  &__puprose {
+    & > div {
+      font-family: "e-Ukraine Head";
+    }
+  }
+}
+
+.cards__list {
+  counter-reset: item;
+
+  & > li {
+    height: 328px;
+    background: url("../assets/images/icons/folder.svg") no-repeat top / cover;
+    font-size: 26px;
+
+    &::before {
+      counter-increment: item;
+      content: counter(item) "/6";
+      position: absolute;
+      top: 16px;
+      left: 44px;
+      z-index: 10;
+    }
+
+    &:hover {
+      background-image: url("../assets/images/icons/folder-hover.svg");
+    }
+
+    & > img:last-of-type {
+      visibility: hidden;
+      top: -61px;
+    }
+
+    &:hover > img:last-of-type {
+      visibility: visible;
+      top: -81px;
+      opacity: 1;
+      z-index: 5;
+    }
+
+    & > img:first-of-type {
+      visibility: hidden;
+    }
+
+    &:hover > img:first-of-type {
+      top: -10px;
+      visibility: visible;
+    }
+
+    & > :first-child {
+      z-index: 10;
+      transition: 300ms;
+    }
+
+    &:hover > :first-child {
+      margin-bottom: 20%;
+      transition: 300ms;
+    }
+  }
+}
+
+.percents {
+  h3 {
+    font-family: "e-Ukraine Head";
+  }
+
+  &__list {
+    > li:nth-child(1) > .percents__number {
+      background: url("../assets/images/circles/91.svg") no-repeat center /
+        cover;
+    }
+
+    > li:nth-child(2) > .percents__number {
+      background: url("../assets/images/circles/56.svg") no-repeat center /
+        cover;
+    }
+
+    > li:nth-child(3) > .percents__number {
+      background: url("../assets/images/circles/35.svg") no-repeat center /
+        cover;
+    }
+
+    > li:nth-child(4) > .percents__number {
+      background: url("../assets/images/circles/9.svg") no-repeat center / cover;
+    }
+  }
+}
+
+.map {
+  background: url("../assets/images/map/back.jpg") no-repeat center / cover;
+
+  &__details {
+    border-radius: 50px;
+    backdrop-filter: blur(24.600000381469727px);
+    background: rgba(21, 21, 21, 0.5);
+    left: 60%;
+    top: 22%;
+    transform: translateX(-60%) translateY(-22%);
+
+    & > div:first-child {
+      border-right: 1px solid #d3d3d3;
+    }
+  }
+
+  &__number {
+    background: url("../assets/images/map/percent.svg") no-repeat center / cover;
+  }
+}
+
+.marquee__inner {
+  animation: marquee 7s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
